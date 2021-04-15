@@ -9,11 +9,12 @@ namespace CHTTIN007 {
         public:
             int x;
             int y;
+            int value;
             bool checked;
             
             //constructors
-            Pixel(void);
-            Pixel(int xCord, int yCord);
+            Pixel();
+            Pixel(int xCord, int yCord,int val);
     };
 
 

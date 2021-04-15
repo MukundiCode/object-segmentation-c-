@@ -3,7 +3,9 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include "PGMimageProcessor.h"
 
+using namespace CHTTIN007;
 int main(void) {
 
         std::string line;
@@ -15,6 +17,7 @@ int main(void) {
         std::string prevLine = "";
         int rows = 0;
         int columns = 0;
+        PGMimageProcessor imageProcessor;
         
         //extracting the file contents and loading them into a 1D vector
         std::vector<int> all ;
@@ -45,6 +48,19 @@ int main(void) {
                 }   
         }
         
+        int pos = 0;
+        for (int x=0;x<columns;++x){
+            std::vector<Pixel> pixelColumn(rows);
+            for(int y=0;y<rows;++y){
+                int value = all[pos]; 
+                Pixel p(x,y,value);
+                pixelColumn.push_back(p);
+                pos++;
+            }
+            imageProcessor.imagePixels.push_back(pixelColumn);
+        }
+        std::cout<< "Size of row is: "<<imageProcessor.imagePixels[0].size() << std::endl;
+        std::cout<< "Size of column is: "<<imageProcessor.imagePixels.size() << std::endl;
         //getting min for ches.pgm
         //printing vector
         std::string name = "test.pgm";
@@ -52,15 +68,17 @@ int main(void) {
         MyFile << "P5" << std::endl;
         MyFile << rows<< " "<< columns << std::endl;
         MyFile << "255" << std::endl;
-        for (int x = 0;x < all.size(); x++){
-            if (all[x] <= thresh){
-                all[x] = -255;
+        for (int x=0;x<columns;++x){
+            for(int y=0;y<rows;++y){
+                if (imageProcessor.imagePixels[x][y].value <= thresh){
+                    imageProcessor.imagePixels[x][y].value = -255;
+                }
+                else{
+                    imageProcessor.imagePixels[x][y].value = 255;
+                } 
+                unsigned char binary = imageProcessor.imagePixels[x][y].value;
+                MyFile << binary ;
             }
-            else{
-                all[x] = 255;
-            }
-            unsigned char character_binary = all[x];
-            MyFile << character_binary ;
         }
         std::cout << name << " Created" << std::endl;
 
