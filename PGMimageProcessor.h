@@ -10,7 +10,7 @@ namespace CHTTIN007 {
     class PGMimageProcessor{
         public:
             std::vector<std::vector<Pixel> > imagePixels;
-            int threshold = -87;
+            int threshold = -61;
             
             //constructors
             PGMimageProcessor(void);

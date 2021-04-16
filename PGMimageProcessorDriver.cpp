@@ -47,7 +47,6 @@ int main(void) {
                 prevLine = line;
                 }   
         }
-        
         int pos = 0;
         for (int x=0;x<columns;++x){
             std::vector<Pixel> pixelrow;
@@ -61,11 +60,17 @@ int main(void) {
         }
         
         //trying the floodfill method
+        std::cout<<"Here "<<imageProcessor.imagePixels[213][729].value<<std::endl;
         for (int x = 0;x<columns;++x){
             for(int y = 0;y<rows;++y){
-               // if (imageProcessor.imagePixels[x][y].value > imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
-                imageProcessor.floodfill(x,y);
-               // }
+                if (imageProcessor.imagePixels[x][y].value > imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
+                    imageProcessor.floodfill(x,y);
+                    std::cout<<"Component created "<<std::endl;
+                }
+                else if(imageProcessor.imagePixels[x][y].value <= imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
+                    imageProcessor.imagePixels[x][y].value = 0;
+                    imageProcessor.imagePixels[x][y].checked = !imageProcessor.imagePixels[x][y].checked ;
+                }
             }
         }
         
