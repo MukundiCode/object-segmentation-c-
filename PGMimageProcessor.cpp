@@ -30,7 +30,7 @@ namespace CHTTIN007 {
         floodfill(x,y-1);
         floodfill(x+1,y);
         floodfill(x-1,y);
-        //std::cout<<"Component extracted"<<std::endl;
+         std::cout<<"Component extracted"<<std::endl;
         return;
     }
         

@@ -63,7 +63,9 @@ int main(void) {
         //trying the floodfill method
         for (int x = 0;x<columns;++x){
             for(int y = 0;y<rows;++y){
+               // if (imageProcessor.imagePixels[x][y].value > imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
                 imageProcessor.floodfill(x,y);
+               // }
             }
         }
         
@@ -78,13 +80,6 @@ int main(void) {
         MyFile << "255" << std::endl;
         for (int x=0;x<columns;++x){
             for(int y=0;y<rows;++y){
-            /*
-                if (imageProcessor.imagePixels[x][y].value <= thresh){
-                    imageProcessor.imagePixels[x][y].value = 0;
-                }
-                else{
-                    imageProcessor.imagePixels[x][y].value = 255;
-                } */
                 unsigned char binary = imageProcessor.imagePixels[x][y].value;
                 MyFile << binary ;
             }
