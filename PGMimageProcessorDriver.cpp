@@ -50,16 +50,16 @@ int main(void) {
         
         int pos = 0;
         for (int x=0;x<columns;++x){
-            std::vector<Pixel> pixelColumn(rows);
+            std::vector<Pixel> pixelrow;
             for(int y=0;y<rows;++y){
                 int value = all[pos]; 
                 Pixel p(x,y,value);
-                pixelColumn.push_back(p);
+                pixelrow.push_back(p);
                 pos++;
             }
-            imageProcessor.imagePixels.push_back(pixelColumn);
+            imageProcessor.imagePixels.push_back(pixelrow);
         }
-        std::cout<< "Size of row is: "<<imageProcessor.imagePixels[0].size() << std::endl;
+        std::cout<< "Size of row is: "<<imageProcessor.imagePixels[0].size()<<" and must be "<< rows << std::endl;
         std::cout<< "Size of column is: "<<imageProcessor.imagePixels.size() << std::endl;
         //getting min for ches.pgm
         //printing vector
