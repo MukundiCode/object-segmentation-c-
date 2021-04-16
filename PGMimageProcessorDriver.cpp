@@ -59,6 +59,14 @@ int main(void) {
             }
             imageProcessor.imagePixels.push_back(pixelrow);
         }
+        
+        //trying the floodfill method
+        for (int x = 0;x<columns;++x){
+            for(int y = 0;y<rows;++y){
+                imageProcessor.floodfill(x,y);
+            }
+        }
+        
         std::cout<< "Size of row is: "<<imageProcessor.imagePixels[0].size()<<" and must be "<< rows << std::endl;
         std::cout<< "Size of column is: "<<imageProcessor.imagePixels.size() << std::endl;
         //getting min for ches.pgm
@@ -70,12 +78,13 @@ int main(void) {
         MyFile << "255" << std::endl;
         for (int x=0;x<columns;++x){
             for(int y=0;y<rows;++y){
+            /*
                 if (imageProcessor.imagePixels[x][y].value <= thresh){
-                    imageProcessor.imagePixels[x][y].value = -255;
+                    imageProcessor.imagePixels[x][y].value = 0;
                 }
                 else{
                     imageProcessor.imagePixels[x][y].value = 255;
-                } 
+                } */
                 unsigned char binary = imageProcessor.imagePixels[x][y].value;
                 MyFile << binary ;
             }
