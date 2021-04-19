@@ -47,35 +47,36 @@ int main(void) {
                 prevLine = line;
                 }   
         }
+        
+        //Loop to create vector of pixel objects
         int pos = 0;
         for (int x=0;x<columns;++x){
             std::vector<Pixel> pixelrow;
             for(int y=0;y<rows;++y){
-                int value = all[pos]; 
-                Pixel p(x,y,value);
+                //int value = all[pos]; 
+                Pixel p(x,y,&all[pos]);
                 pixelrow.push_back(p);
                 pos++;
             }
             imageProcessor.imagePixels.push_back(pixelrow);
         }
         
-        //trying the floodfill method
-        std::cout<<"Here "<<imageProcessor.imagePixels[213][729].value<<std::endl;
+        /* Iterating through the image and using the floodfill method to get components */
         for (int x = 0;x<columns;++x){
             for(int y = 0;y<rows;++y){
-                if (imageProcessor.imagePixels[x][y].value > imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
-                    imageProcessor.floodfill(x,y);
-                    std::cout<<"Component created "<<std::endl;
+                if (*imageProcessor.imagePixels[x][y].value > imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
+                    ConnectedComponent c;
+                    imageProcessor.floodfill(x,y,c);
+                    imageProcessor.components.push_back(c);
+                    std::cout<<"Component created and added to the vector"<<std::endl;
                 }
-                else if(imageProcessor.imagePixels[x][y].value <= imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
-                    imageProcessor.imagePixels[x][y].value = 0;
+                else if(*imageProcessor.imagePixels[x][y].value <= imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
+                    *imageProcessor.imagePixels[x][y].value = 0;
                     imageProcessor.imagePixels[x][y].checked = !imageProcessor.imagePixels[x][y].checked ;
                 }
             }
         }
         
-        std::cout<< "Size of row is: "<<imageProcessor.imagePixels[0].size()<<" and must be "<< rows << std::endl;
-        std::cout<< "Size of column is: "<<imageProcessor.imagePixels.size() << std::endl;
         //getting min for ches.pgm
         //printing vector
         std::string name = "test.pgm";
@@ -85,7 +86,7 @@ int main(void) {
         MyFile << "255" << std::endl;
         for (int x=0;x<columns;++x){
             for(int y=0;y<rows;++y){
-                unsigned char binary = imageProcessor.imagePixels[x][y].value;
+                unsigned char binary = *imageProcessor.imagePixels[x][y].value;
                 MyFile << binary ;
             }
         }

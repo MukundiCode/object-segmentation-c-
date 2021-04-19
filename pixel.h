@@ -3,18 +3,19 @@
   */
 #include <string>
 
+
 namespace CHTTIN007 {
     
     class Pixel{
         public:
             int x;
             int y;
-            int value;
+            int* value;
             bool checked;
             
             //constructors
             Pixel();
-            Pixel(int xCord, int yCord,int val);
+            Pixel(int xCord, int yCord,int* val);
     };
 
 

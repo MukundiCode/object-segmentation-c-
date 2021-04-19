@@ -6,13 +6,14 @@
 
 #include "pixel.h"
 #include <string>
+#include <iostream>
 
 using namespace CHTTIN007;
 
 namespace CHTTIN007{
     //implementing constructors
     Pixel::Pixel(){}
-    Pixel::Pixel(int xCord,int yCord,int val){
+    Pixel::Pixel(int xCord,int yCord,int* val){
         x = xCord;
         y = yCord;
         value = val;
