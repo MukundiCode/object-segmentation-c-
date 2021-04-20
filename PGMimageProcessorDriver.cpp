@@ -66,6 +66,8 @@ int main(void) {
         
         //getting min for ches.pgm
         //printing vector
+        imageProcessor.writeComponents("test333.pgm");
+        /*
         std::string name = "test.pgm";
         std::ofstream MyFile(name);
         MyFile << "P5" << std::endl;
@@ -78,5 +80,6 @@ int main(void) {
             }
         }
         std::cout << name << " Created" << std::endl;
+        */
 
 }

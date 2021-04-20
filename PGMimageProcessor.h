@@ -24,6 +24,7 @@ namespace CHTTIN007 {
             void floodfill(int x, int y,ConnectedComponent* c);
             int extractComponents(int threshold, int minValidSize);
             int getComponentCount();
+            bool writeComponents(const std::string & outFileName);
     };
 
 

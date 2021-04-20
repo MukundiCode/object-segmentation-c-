@@ -4,6 +4,8 @@
 #include "PGMimageProcessor.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <sstream>
 
 using namespace CHTTIN007;
 namespace CHTTIN007 {
@@ -65,6 +67,29 @@ namespace CHTTIN007 {
     int PGMimageProcessor::getComponentCount(){
         return components.size();
     }
+    
+    /* create a new PGM file which contains all current components
+    (255=component pixel, 0 otherwise) and write this to outFileName as a
+    valid PGM. the return value indicates success of operation
+    */
+    bool PGMimageProcessor::writeComponents(const std::string & outFileName){
+        std::string name = outFileName;
+        std::ofstream MyFile(name);
+        MyFile << "P5" << std::endl;
+        MyFile << rows<< " "<< columns << std::endl;
+        MyFile << "255" << std::endl;
+        for (int x=0;x<columns;++x){
+            for(int y=0;y<rows;++y){
+                unsigned char binary = *imagePixels[x][y].value;
+                MyFile << binary ;
+            }
+        }
+        std::cout << name << " Created" << std::endl;
+        return true;
+    
+    
+    }
+
 
 
 
