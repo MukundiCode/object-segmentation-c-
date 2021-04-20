@@ -17,7 +17,6 @@ int main(void) {
         std::string prevLine = "";
         int rows = 0;
         int columns = 0;
-        PGMimageProcessor imageProcessor;
         
         //extracting the file contents and loading them into a 1D vector
         std::vector<int> all ;
@@ -48,6 +47,7 @@ int main(void) {
                 }   
         }
         
+        PGMimageProcessor imageProcessor(rows,columns);
         //Loop to create vector of pixel objects
         int pos = 0;
         for (int x=0;x<columns;++x){
@@ -61,21 +61,8 @@ int main(void) {
             imageProcessor.imagePixels.push_back(pixelrow);
         }
         
-        /* Iterating through the image and using the floodfill method to get components */
-        for (int x = 0;x<columns;++x){
-            for(int y = 0;y<rows;++y){
-                if (*imageProcessor.imagePixels[x][y].value > imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
-                    ConnectedComponent c;
-                    imageProcessor.floodfill(x,y,c);
-                    imageProcessor.components.push_back(c);
-                    std::cout<<"Component created and added to the vector"<<std::endl;
-                }
-                else if(*imageProcessor.imagePixels[x][y].value <= imageProcessor.threshold && imageProcessor.imagePixels[x][y].checked == false){
-                    *imageProcessor.imagePixels[x][y].value = 0;
-                    imageProcessor.imagePixels[x][y].checked = !imageProcessor.imagePixels[x][y].checked ;
-                }
-            }
-        }
+        int noOfComps = imageProcessor.extractComponents(-61,0);
+        std::cout<< "Number of components: "<< noOfComps << std::endl;
         
         //getting min for ches.pgm
         //printing vector

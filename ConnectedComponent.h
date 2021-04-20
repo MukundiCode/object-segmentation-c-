@@ -11,6 +11,7 @@ namespace CHTTIN007 {
             
             //constructor
             ConnectedComponent();
+            int getSize();
     
     };
 

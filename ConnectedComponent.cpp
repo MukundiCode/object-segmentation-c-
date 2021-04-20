@@ -11,5 +11,9 @@ namespace CHTTIN007 {
 
     ConnectedComponent::ConnectedComponent(){};
     
+    //To get the size of the component
+    int ConnectedComponent::getSize(){
+        return pixels.size();
+    }
 
 }
