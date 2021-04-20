@@ -62,7 +62,7 @@ int main(void) {
         }
         
         int noOfComps = imageProcessor.extractComponents(-61,0);
-        std::cout<< "Number of components: "<< noOfComps << std::endl;
+        std::cout<< "Number of components: "<< imageProcessor.getComponentCount() << std::endl;
         
         //getting min for ches.pgm
         //printing vector

@@ -40,6 +40,7 @@ namespace CHTTIN007 {
         
     }
     
+    /* Extracts the components from the pgm file, and filters by min size */
     int PGMimageProcessor::extractComponents(int threshold, int minValidSize){
         for (int x = 0;x<columns;++x){
             for(int y = 0;y<rows;++y){
@@ -57,6 +58,11 @@ namespace CHTTIN007 {
                 }
             }
         }
+        return components.size();
+    }
+    
+    /* Get the number of components in the vector */
+    int PGMimageProcessor::getComponentCount(){
         return components.size();
     }
 
