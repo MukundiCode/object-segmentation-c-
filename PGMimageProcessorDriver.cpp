@@ -10,8 +10,6 @@ int main(void) {
 
         std::string line;
         std::ifstream image("chess.pgm",std::ios::binary);
-    
-        int thresh = -96;
         int counter = 0;
         bool read = false;
         std::string prevLine = "";
@@ -63,23 +61,8 @@ int main(void) {
         
         int noOfComps = imageProcessor.extractComponents(-61,0);
         std::cout<< "Number of components: "<< imageProcessor.getComponentCount() << std::endl;
-        
-        //getting min for ches.pgm
+        std::cout<< "Number of components after filer: "<<imageProcessor.filterComponentsBySize(4500,7000)<<std::endl;
         //printing vector
-        imageProcessor.writeComponents("test333.pgm");
-        /*
-        std::string name = "test.pgm";
-        std::ofstream MyFile(name);
-        MyFile << "P5" << std::endl;
-        MyFile << rows<< " "<< columns << std::endl;
-        MyFile << "255" << std::endl;
-        for (int x=0;x<columns;++x){
-            for(int y=0;y<rows;++y){
-                unsigned char binary = *imageProcessor.imagePixels[x][y].value;
-                MyFile << binary ;
-            }
-        }
-        std::cout << name << " Created" << std::endl;
-        */
+        imageProcessor.writeComponents("test.pgm");
 
 }

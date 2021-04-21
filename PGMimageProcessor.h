@@ -25,6 +25,7 @@ namespace CHTTIN007 {
             int extractComponents(int threshold, int minValidSize);
             int getComponentCount();
             bool writeComponents(const std::string & outFileName);
+            int filterComponentsBySize(int minSize,int maxSize);
     };
 
 

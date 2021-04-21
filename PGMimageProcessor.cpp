@@ -86,8 +86,20 @@ namespace CHTTIN007 {
         }
         std::cout << name << " Created" << std::endl;
         return true;
+    }
     
-    
+    /* iterate - with an iterator - though your container of connected
+    components and filter out (remove) all the components which do not
+    obey the size criteria pass as arguments. The number remaining
+    after this operation should be returned.
+    */
+    int PGMimageProcessor::filterComponentsBySize(int minSize, int maxSize){
+        for(std::vector<ConnectedComponent>::iterator i= components.begin();i != components.end(); ++i ){
+            if ((*i).getSize() < minSize || (*i).getSize() > maxSize){
+                components.erase(i--);
+            }
+        }
+        return components.size();
     }
 
 
