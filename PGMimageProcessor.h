@@ -23,9 +23,12 @@ namespace CHTTIN007 {
             /*The floodfill method rakes in an x and y value then recursively check if neighbors are connected*/
             void floodfill(int x, int y,ConnectedComponent* c);
             int extractComponents(int threshold, int minValidSize);
-            int getComponentCount();
+            int getComponentCount()const;
             bool writeComponents(const std::string & outFileName);
             int filterComponentsBySize(int minSize,int maxSize);
+            int getLargestSize(void)const;
+            int getSmallestSize(void) const;
+            void printComponentData(const ConnectedComponent & theComponent) const;
     };
 
 

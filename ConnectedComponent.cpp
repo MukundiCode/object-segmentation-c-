@@ -12,8 +12,26 @@ namespace CHTTIN007 {
     ConnectedComponent::ConnectedComponent(){};
     
     //To get the size of the component
-    int ConnectedComponent::getSize(){
+    int ConnectedComponent::getSize()const{
         return pixels.size();
+    }
+    
+    // == operator overload
+    bool operator== (const ConnectedComponent &c1, const ConnectedComponent &c2){
+        if( c1.getSize() != c2.getSize()){
+            return false;
+        }
+        else {
+            for(int i = 0;i<c1.getSize();++i){
+                if (c1.pixels[i].value != c2.pixels[i].value){
+                    return false;
+                }
+                else{
+                    continue;
+                }
+            }
+        return true;
+        }
     }
 
 }

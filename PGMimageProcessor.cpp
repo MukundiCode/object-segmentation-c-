@@ -64,7 +64,7 @@ namespace CHTTIN007 {
     }
     
     /* Get the number of components in the vector */
-    int PGMimageProcessor::getComponentCount(){
+    int PGMimageProcessor::getComponentCount()const{
         return components.size();
     }
     
@@ -101,6 +101,45 @@ namespace CHTTIN007 {
         }
         return components.size();
     }
+    
+    // return number of pixels in largest component
+    int PGMimageProcessor::getLargestSize(void) const{
+        int largest = 0;
+        for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
+            if ((*i).getSize() > largest){
+                largest = (*i).getSize();
+            }
+        }
+        return largest;
+    }
+    
+    // return number of pixels in smallest component
+    int PGMimageProcessor::getSmallestSize(void) const{
+        int smallest = components[0].getSize();
+        for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
+            if ((*i).getSize() < smallest){
+                smallest = (*i).getSize();
+            }
+        }
+        return smallest;
+    
+    }
+    
+    /* print the data for a component to std::cout
+    see ConnectedComponent class;
+    print out to std::cout: component ID, number of pixels
+    */
+    void PGMimageProcessor::printComponentData(const ConnectedComponent & theComponent) const{
+        int counter = 0;
+        for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
+            if ((*i) == theComponent){
+                std::cout<<counter<<","<<(*i).getSize()<<std::endl;
+            }
+            counter++;
+        }
+    
+    }
+
 
 
 

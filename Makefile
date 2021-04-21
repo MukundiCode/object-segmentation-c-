@@ -1,5 +1,5 @@
 findcomp.exe: pixel.o PGMimageProcessor.o PGMimageProcessorDriver.o ConnectedComponent.o
-	g++ PGMimageProcessor.o PGMimageProcessorDriver.o pixel.o ConnectedComponent.o -o findcomp.exe -std=c++2a
+	g++ pixel.o ConnectedComponent.o PGMimageProcessor.o PGMimageProcessorDriver.o -o findcomp.exe -std=c++2a
 
 pixel.o: pixel.cpp
 	g++ -c pixel.cpp -o pixel.o -std=c++2a

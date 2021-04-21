@@ -11,9 +11,11 @@ namespace CHTTIN007 {
             
             //constructor
             ConnectedComponent();
-            int getSize();
+            int getSize()const;
+            
     
     };
+    bool operator== (const ConnectedComponent &c1, const ConnectedComponent &c2);
 
 
 
