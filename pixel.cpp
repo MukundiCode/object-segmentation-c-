@@ -19,5 +19,15 @@ namespace CHTTIN007{
         value = val;
         checked = false;
     }
+    Pixel::~Pixel(){}
+    
+    //Copy constructor
+    Pixel::Pixel(const Pixel & rhs): x(rhs.x),y(rhs.x),value(rhs.value),checked(rhs.checked){}
+    //Move construcot
+    Pixel::Pixel(Pixel && rhs): x(rhs.x),y(rhs.x),value(rhs.value),checked(rhs.checked){
+        delete this;
+    }
+    //copy assignment operator
+    //Pixel & operator=(const Pixel rhs);
 
 } 
