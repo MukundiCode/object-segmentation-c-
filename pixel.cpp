@@ -25,10 +25,10 @@ namespace CHTTIN007{
     Pixel::Pixel(const Pixel & rhs): x(rhs.x),y(rhs.x),value(rhs.value),checked(rhs.checked){}
     //Move construcot
     Pixel::Pixel(Pixel && rhs): x(rhs.x),y(rhs.x),value(rhs.value),checked(rhs.checked){
-        delete this;
+        delete &rhs;
     }
     //copy assignment operator
-    Pixel & Pixel::operator=(const Pixel rhs){
+    Pixel & Pixel::operator=(const Pixel& rhs){
         x = rhs.x;
         y = rhs.x;
         value = rhs.value;

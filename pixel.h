@@ -23,7 +23,7 @@ namespace CHTTIN007 {
             //move constructor
             Pixel(Pixel && rhs);
             //copy assignment operator
-            Pixel & operator=(const Pixel rhs);
+            Pixel & operator=(const Pixel& rhs);
             //move assignment operator
             Pixel & operator=(Pixel && rhs);
     };
