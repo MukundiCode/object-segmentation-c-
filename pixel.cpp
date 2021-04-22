@@ -28,6 +28,21 @@ namespace CHTTIN007{
         delete this;
     }
     //copy assignment operator
-    //Pixel & operator=(const Pixel rhs);
+    Pixel & Pixel::operator=(const Pixel rhs){
+        x = rhs.x;
+        y = rhs.x;
+        value = rhs.value;
+        checked = rhs.checked;
+        return *this;
+    }
+    //move assignment operator
+    Pixel & Pixel::operator=(Pixel && rhs){
+        x = rhs.x;
+        y = rhs.x;
+        value = rhs.value;
+        checked = rhs.checked;
+        delete &rhs;
+        return *this;
+    }
 
 } 
