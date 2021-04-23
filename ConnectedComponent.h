@@ -12,6 +12,7 @@ namespace CHTTIN007 {
             //constructor
             ConnectedComponent();
             //destructor
+            
             ~ConnectedComponent();
             //copy constructor
             ConnectedComponent(const ConnectedComponent& rhs);

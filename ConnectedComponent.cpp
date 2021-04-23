@@ -11,6 +11,7 @@ namespace CHTTIN007 {
 
     ConnectedComponent::ConnectedComponent(){};
     //destructor
+    
     ConnectedComponent::~ConnectedComponent(){}
     //copy constructor
     ConnectedComponent::ConnectedComponent(const ConnectedComponent& rhs){
@@ -24,7 +25,7 @@ namespace CHTTIN007 {
             pixels[i] = rhs.pixels[i];
         }
         for(int i = 0;i<pixels.size();i++){
-            delete &rhs.pixels[i];
+           // delete &rhs.pixels[i];
         }
     }
     //copy assignment
@@ -40,7 +41,7 @@ namespace CHTTIN007 {
             pixels[i] = rhs.pixels[i];
         }
         for(int i = 0;i<pixels.size();i++){
-            delete &rhs.pixels[i];
+           // delete &rhs.pixels[i];
         }
         return *this;
    }

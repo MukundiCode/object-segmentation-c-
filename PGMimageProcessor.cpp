@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <memory>
 
 using namespace CHTTIN007;
 namespace CHTTIN007 {
@@ -17,7 +18,7 @@ namespace CHTTIN007 {
     }
     
     //Implementing floodfill
-    void PGMimageProcessor:: floodfill(int x,int y,ConnectedComponent* c){
+    void PGMimageProcessor:: floodfill(int x,int y,ConnectedComponent c){
         if (x >= imagePixels.size() || y >= imagePixels[0].size() || x < 0 || y < 0){
             return;
         }
@@ -32,7 +33,7 @@ namespace CHTTIN007 {
         else{
             *imagePixels[x][y].value = 255;
             imagePixels[x][y].checked = !imagePixels[x][y].checked;
-            (c)->pixels.push_back(imagePixels[x][y]);
+            c.pixels.push_back(imagePixels[x][y]);
             floodfill(x,y+1,c);
             floodfill(x,y-1,c);
             floodfill(x+1,y,c);
@@ -48,7 +49,7 @@ namespace CHTTIN007 {
             for(int y = 0;y<rows;++y){
                 if (*imagePixels[x][y].value > threshold && imagePixels[x][y].checked == false){
                     ConnectedComponent c;
-                    floodfill(x,y,&c);
+                    floodfill(x,y,c);
                     if (c.getSize() >= minValidSize){
                         components.push_back(c);
                         std::cout<<"Component created and added to the vector with size: "<<c.getSize()<<std::endl;
@@ -115,7 +116,8 @@ namespace CHTTIN007 {
     
     // return number of pixels in smallest component
     int PGMimageProcessor::getSmallestSize(void) const{
-        int smallest = components[0].getSize();
+        int smallest = components.back().getSize();
+        std::cout<< "The smallest is: "<<smallest<<std::endl;
         for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
             if ((*i).getSize() < smallest){
                 smallest = (*i).getSize();
