@@ -19,6 +19,16 @@ namespace CHTTIN007 {
             //constructors
             PGMimageProcessor(void);
             PGMimageProcessor(int r,int c);
+            //destructor
+            ~PGMimageProcessor() = default;
+            //copy constructor
+            PGMimageProcessor(const PGMimageProcessor& rhs) = default;
+            //move constructor
+            PGMimageProcessor(PGMimageProcessor && rhs) = default;
+            //copy assignment 
+            PGMimageProcessor & operator=(const PGMimageProcessor& rhs) = default;
+            PGMimageProcessor & operator=(PGMimageProcessor && rhs) = default;
+            
             
             /*The floodfill method rakes in an x and y value then recursively check if neighbors are connected*/
             void floodfill(int x, int y,ConnectedComponent* c);
