@@ -12,9 +12,10 @@ using namespace CHTTIN007;
 namespace CHTTIN007 {
     
     PGMimageProcessor::PGMimageProcessor(){}
-    PGMimageProcessor::PGMimageProcessor(int r,int c){
+    PGMimageProcessor::PGMimageProcessor(int r,int c,int t){
         rows = r;
         columns = c;
+        threshold = t;
     }
     
     //Implementing floodfill
@@ -54,7 +55,7 @@ namespace CHTTIN007 {
                         c.id = components.size();
                         c.pixelCount = c.getSize();
                         components.push_back(c);
-                        std::cout<<"Component created and added to the vector with size: "<<components.back().getSize()<<std::endl;
+                        std::cout<<"Component created with size "<<components.back().getSize()<<" and ID "<<c.id<<" and added to components vector."<<std::endl;
                     }
                 }
                 else if(*imagePixels[x][y].value <= threshold && imagePixels[x][y].checked == false){
@@ -120,7 +121,6 @@ namespace CHTTIN007 {
     // return number of pixels in smallest component
     int PGMimageProcessor::getSmallestSize(void) const{
         int smallest = components.back().getSize();
-        std::cout<< "The smallest is: "<<smallest<<std::endl;
         for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
             if ((*i).getSize() < smallest){
                 smallest = (*i).getSize();

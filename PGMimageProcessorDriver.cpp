@@ -6,10 +6,23 @@
 #include "PGMimageProcessor.h"
 
 using namespace CHTTIN007;
-int main(void) {
+int main(int argc, char* argv[]) {
+
+
+    std::string filename;
+    //declaring defaults
+    int minSize = 3;
+    int threshold = 128;
+    if (argc > 1){
+        filename = argv[1];
+        minSize = atoi(argv[3]);
+        int maxSize = atoi(argv[4]);
+        threshold = atoi(argv[6]);
+        std::string outFile = argv[9];
 
         std::string line;
-        std::ifstream image("chess.pgm",std::ios::binary);
+        std::ifstream image(filename,std::ios::binary);
+        
         int counter = 0;
         bool read = false;
         std::string prevLine = "";
@@ -30,14 +43,13 @@ int main(void) {
                     }
                 }
             else{
-                std::cout << line << std::endl;
+                std::cout <<"PGM Header info: "<< line << std::endl;
                 }
                 
             if (line == "255"){
                 std::istringstream iss(prevLine);
                 iss >> rows;
                 iss >> columns;
-                //std::cout << "Rows "<< rows<< " and Columns " << columns << std::endl;
                 read = !read;  
                 }
             if (read == false){
@@ -45,7 +57,7 @@ int main(void) {
                 }   
         }
         
-        PGMimageProcessor imageProcessor(rows,columns);
+        PGMimageProcessor imageProcessor(rows,columns,threshold);
         //Loop to create vector of pixel objects
         int pos = 0;
         for (int x=0;x<columns;++x){
@@ -59,14 +71,21 @@ int main(void) {
             imageProcessor.imagePixels.push_back(pixelrow);
         }
         
-        int noOfComps = imageProcessor.extractComponents(-61,0);
+        int noOfComps = imageProcessor.extractComponents(threshold,minSize);
         std::cout<< "Number of components: "<< imageProcessor.getComponentCount() << std::endl;
         std::cout<< "Largest component is: "<< imageProcessor.getLargestSize() << std::endl;
         std::cout<< "Smallest component is: "<< imageProcessor.getSmallestSize() << std::endl;
-        ConnectedComponent c = imageProcessor.components[0];
-        imageProcessor.printComponentData(c);
-        std::cout<< "Number of components after filter: "<<imageProcessor.filterComponentsBySize(4500,7000)<<std::endl;
+        std::cout<< "Number of components after filter: "<<imageProcessor.filterComponentsBySize(minSize,maxSize)<<std::endl;
         //printing vector
-        imageProcessor.writeComponents("test.pgm");
+        imageProcessor.writeComponents(outFile);
+        
+    }
+    
+    
+    //if no commandline args
+    else {
+        std::cout << "Please add valid commandline arguments" << std::endl;
+    }
+    
 
 }

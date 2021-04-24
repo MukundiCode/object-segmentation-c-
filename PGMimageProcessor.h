@@ -14,11 +14,9 @@ namespace CHTTIN007 {
             int columns;
             std::vector<std::vector<Pixel> > imagePixels;
             int threshold = -61;
-            std::vector<ConnectedComponent> components;
-            
             //constructors
             PGMimageProcessor(void);
-            PGMimageProcessor(int r,int c);
+            PGMimageProcessor(int r,int c,int t);
             //destructor
             ~PGMimageProcessor() = default;
             //copy constructor
@@ -39,6 +37,9 @@ namespace CHTTIN007 {
             int getLargestSize(void)const;
             int getSmallestSize(void) const;
             void printComponentData(const ConnectedComponent & theComponent) const;
+        private:
+            std::vector<ConnectedComponent> components;
+    
     };
 
 
