@@ -51,6 +51,8 @@ namespace CHTTIN007 {
                     ConnectedComponent c;
                     floodfill(x,y,&c);
                     if (c.getSize() >= minValidSize){
+                        c.id = components.size();
+                        c.pixelCount = c.getSize();
                         components.push_back(c);
                         std::cout<<"Component created and added to the vector with size: "<<components.back().getSize()<<std::endl;
                     }

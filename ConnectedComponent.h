@@ -7,6 +7,8 @@ namespace CHTTIN007 {
 
     class ConnectedComponent {
         public:
+            int id;
+            int pixelCount;
             std::vector<Pixel> pixels;
             
             //constructor

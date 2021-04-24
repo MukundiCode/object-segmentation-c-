@@ -9,8 +9,9 @@ using namespace CHTTIN007;
 
 namespace CHTTIN007 {
 
-    ConnectedComponent::ConnectedComponent(){};
-    
+    ConnectedComponent::ConnectedComponent(){
+        
+    };
     
     //destructor
     ConnectedComponent::~ConnectedComponent(){}
