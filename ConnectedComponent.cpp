@@ -10,41 +10,10 @@ using namespace CHTTIN007;
 namespace CHTTIN007 {
 
     ConnectedComponent::ConnectedComponent(){};
-    /*
+    
+    
     //destructor
     ConnectedComponent::~ConnectedComponent(){}
-    //copy constructor
-    ConnectedComponent::ConnectedComponent(const ConnectedComponent& rhs){
-        for(int i = 0;i<pixels.size();i++){
-            pixels[i] = rhs.pixels[i];
-        }
-    }
-    //move constructor
-    ConnectedComponent::ConnectedComponent(ConnectedComponent && rhs){
-        for(int i = 0;i<pixels.size();i++){
-            pixels[i] = rhs.pixels[i];
-        }
-        for(int i = 0;i<pixels.size();i++){
-           // delete &rhs.pixels[i];
-        }
-    }
-    //copy assignment
-   ConnectedComponent & ConnectedComponent::operator=(const ConnectedComponent& rhs){
-       for(int i = 0;i<pixels.size();i++){
-            pixels[i] = rhs.pixels[i];
-        }
-        return *this;
-   }
-   //move assignment
-   ConnectedComponent & ConnectedComponent::operator=(ConnectedComponent &&rhs){
-       for(int i = 0;i<pixels.size();i++){
-            pixels[i] = rhs.pixels[i];
-        }
-        for(int i = 0;i<pixels.size();i++){
-           // delete &rhs.pixels[i];
-        }
-        return *this;
-   } */
     
     //To get the size of the component
     int ConnectedComponent::getSize()const{

@@ -12,16 +12,15 @@ namespace CHTTIN007 {
             //constructor
             ConnectedComponent();
             //destructor
-            /*
             ~ConnectedComponent();
             //copy constructor
-            ConnectedComponent(const ConnectedComponent& rhs);
+            ConnectedComponent(const ConnectedComponent& rhs) = default;
             //move constructor
-            ConnectedComponent(ConnectedComponent && rhs);
+            ConnectedComponent(ConnectedComponent && rhs) = default;
             //copy assignment 
-            ConnectedComponent & operator=(const ConnectedComponent& rhs);
-            ConnectedComponent & operator=(ConnectedComponent && rhs);
-            */
+            ConnectedComponent & operator=(const ConnectedComponent& rhs) = default;
+            ConnectedComponent & operator=(ConnectedComponent && rhs) = default;
+            
             int getSize()const;
             
     
