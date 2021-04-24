@@ -12,7 +12,7 @@ namespace CHTTIN007 {
             //constructor
             ConnectedComponent();
             //destructor
-            
+            /*
             ~ConnectedComponent();
             //copy constructor
             ConnectedComponent(const ConnectedComponent& rhs);
@@ -21,7 +21,7 @@ namespace CHTTIN007 {
             //copy assignment 
             ConnectedComponent & operator=(const ConnectedComponent& rhs);
             ConnectedComponent & operator=(ConnectedComponent && rhs);
-            
+            */
             int getSize()const;
             
     

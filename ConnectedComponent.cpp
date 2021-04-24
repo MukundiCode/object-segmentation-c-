@@ -10,8 +10,8 @@ using namespace CHTTIN007;
 namespace CHTTIN007 {
 
     ConnectedComponent::ConnectedComponent(){};
+    /*
     //destructor
-    
     ConnectedComponent::~ConnectedComponent(){}
     //copy constructor
     ConnectedComponent::ConnectedComponent(const ConnectedComponent& rhs){
@@ -44,7 +44,7 @@ namespace CHTTIN007 {
            // delete &rhs.pixels[i];
         }
         return *this;
-   }
+   } */
     
     //To get the size of the component
     int ConnectedComponent::getSize()const{

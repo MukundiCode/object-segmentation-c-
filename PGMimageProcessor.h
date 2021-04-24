@@ -21,7 +21,7 @@ namespace CHTTIN007 {
             PGMimageProcessor(int r,int c);
             
             /*The floodfill method rakes in an x and y value then recursively check if neighbors are connected*/
-            void floodfill(int x, int y,ConnectedComponent c);
+            void floodfill(int x, int y,ConnectedComponent* c);
             int extractComponents(int threshold, int minValidSize);
             int getComponentCount()const;
             bool writeComponents(const std::string & outFileName);
