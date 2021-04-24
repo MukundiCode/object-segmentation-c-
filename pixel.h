@@ -17,7 +17,6 @@ namespace CHTTIN007 {
             Pixel();
             Pixel(int xCord, int yCord,int* val);
             
-            /*
             //destructor 
             ~Pixel();
             //copy constructor
@@ -28,7 +27,6 @@ namespace CHTTIN007 {
             Pixel & operator=(const Pixel& rhs);
             //move assignment operator
             Pixel & operator=(Pixel && rhs);
-            */
     };
 
 

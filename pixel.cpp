@@ -19,7 +19,6 @@ namespace CHTTIN007{
         value = val;
         checked = false;
     }
-    /*
     Pixel::~Pixel(){}
     
     //Copy constructor
@@ -45,6 +44,6 @@ namespace CHTTIN007{
         delete &rhs;
         return *this;
     }
-    */
+    
 
 } 
