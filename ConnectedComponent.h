@@ -1,6 +1,8 @@
 /* Tinashe Mukundi Chitamba
    This is the header file for the connected component class
    */
+#ifndef _CnnectedComponent_h
+#define _ConnectedComponent_h
 #include <vector>
 #include "pixel.h"
 namespace CHTTIN007 {
@@ -29,8 +31,5 @@ namespace CHTTIN007 {
     };
     bool operator== (const ConnectedComponent &c1, const ConnectedComponent &c2);
 
-
-
-
-
 }
+#endif

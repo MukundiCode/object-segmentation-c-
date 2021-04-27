@@ -1,5 +1,8 @@
-findcomp.exe: pixel.o PGMimageProcessor.o PGMimageProcessorDriver.o ConnectedComponent.o unit_tests.o
-	g++ pixel.o ConnectedComponent.o PGMimageProcessor.o PGMimageProcessorDriver.o unit_tests.o -o findcomp.exe -std=c++2a
+findcomp.exe: pixel.o PGMimageProcessor.o PGMimageProcessorDriver.o ConnectedComponent.o
+	g++ pixel.o ConnectedComponent.o PGMimageProcessor.o PGMimageProcessorDriver.o -o findcomp.exe -std=c++2a
+ 
+#tests.exe: pixel.o PGMimageProcessor.o PGMimageProcessorDriver.o ConnectedComponent.o unit_tests.o
+#	g++ pixel.o ConnectedComponent.o PGMimageProcessor.o PGMimageProcessorDriver.o unit_tests.o -o tests.exe -std=c++2a
 
 pixel.o: pixel.cpp
 	g++ -c pixel.cpp -o pixel.o -std=c++2a

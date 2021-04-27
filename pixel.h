@@ -1,8 +1,9 @@
 /*Tinashe Mukundi Chitamba
   This is the header file for the pixel class
   */
+#ifndef _Pixel_h
+#define _Pixel_h
 #include <string>
-
 
 namespace CHTTIN007 {
     
@@ -29,6 +30,5 @@ namespace CHTTIN007 {
             Pixel & operator=(Pixel && rhs);
     };
 
-
-
 }
+#endif

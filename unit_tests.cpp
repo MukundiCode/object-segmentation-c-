@@ -9,6 +9,7 @@ TEST_CASE("PGMimageProcessor Methods"){
     int minSize = 3;
     int maxSize = 7000;
     int threshold = -61;
+    std::string outFile = "testOutputFile.pgm";
     std::string line;
     std::ifstream image("chess.pgm",std::ios::binary); 
     int counter = 0;
@@ -61,7 +62,7 @@ TEST_CASE("PGMimageProcessor Methods"){
         REQUIRE(imageProcessor.getComponentCount() == 6);
     }
     SECTION("writeComponents"){
-        REQUIRE(imageProcessor.writeComponents() == true);
+        REQUIRE(imageProcessor.writeComponents(outFile) == true);
     }
     SECTION("filterComponentsBySize"){
         REQUIRE(imageProcessor.filterComponentsBySize(minSize,maxSize) == 5);

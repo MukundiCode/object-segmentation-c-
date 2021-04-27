@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include "PGMimageProcessor.h"
+//#include "pixel.h"
 
 using namespace CHTTIN007;
 int main(int argc, char* argv[]) {
@@ -89,3 +90,4 @@ int main(int argc, char* argv[]) {
     
 
 }
+

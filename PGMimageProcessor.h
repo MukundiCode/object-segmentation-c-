@@ -2,7 +2,8 @@
   the pgm files, and the methods used to extract pgm data as well as apply connected 
   component analysis on it
   */
-
+#ifndef _PGMimageProcessor_h
+#define _PGMimageProcessor_h
 #include <vector>
 //#include "pixel.h"
 #include "ConnectedComponent.h"
@@ -45,3 +46,4 @@ namespace CHTTIN007 {
 
 
 }
+#endif
