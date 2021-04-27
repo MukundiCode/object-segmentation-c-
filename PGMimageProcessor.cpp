@@ -120,14 +120,19 @@ namespace CHTTIN007 {
     
     // return number of pixels in smallest component
     int PGMimageProcessor::getSmallestSize(void) const{
-        int smallest = components.back().getSize();
-        for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
-            if ((*i).getSize() < smallest){
-                smallest = (*i).getSize();
+        if(components.size() > 0){
+            int smallest = components.back().getSize();
+            for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
+                if ((*i).getSize() < smallest){
+                    smallest = (*i).getSize();
+                }
             }
+            return smallest;
         }
-        return smallest;
-    
+        else{
+            std::cout<< "No components in container"<<std::endl;
+            return 0;
+        }
     }
     
     /* print the data for a component to std::cout
