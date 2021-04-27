@@ -1,3 +1,4 @@
+#ifndef CATCH_CONFIG_MAIN
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "PGMimageProcessor.h"
@@ -28,9 +29,9 @@ TEST_CASE("PGMimageProcessor Methods"){
                 all.push_back(c);
             }
         }
-        else{
+        /*else{
             std::cout <<"PGM Header info: "<< line << std::endl;
-        }      
+        } */     
         if (line == "255"){
             std::istringstream iss(prevLine);
             iss >> rows;
@@ -55,25 +56,39 @@ TEST_CASE("PGMimageProcessor Methods"){
         }
         imageProcessor.imagePixels.push_back(pixelrow);
     }
-    SECTION("extractComponents"){
-        REQUIRE(imageProcessor.extractComponents(threshold,0) == 6);
-    }
-    SECTION("getComponentCount"){
-        REQUIRE(imageProcessor.getComponentCount() == 6);
-    }
-    SECTION("writeComponents"){
-        REQUIRE(imageProcessor.writeComponents(outFile) == true);
-    }
-    SECTION("filterComponentsBySize"){
-        REQUIRE(imageProcessor.filterComponentsBySize(minSize,maxSize) == 5);
-    }
-    SECTION("getLargestSize"){
-        REQUIRE(imageProcessor.getLargestSize() == 7000);
-    }
-    SECTION("getSmallestSize"){
-        REQUIRE(imageProcessor.getSmallestSize() == 3000);
+    SECTION("Constructor"){
+        REQUIRE(imageProcessor.rows == rows);
     }
     
-
-
+    SECTION("Constructor"){
+        REQUIRE(imageProcessor.rows == rows);
+    }
+    
+    SECTION( "Move Assignment Operator" ) {
+        PGMimageProcessor p = PGMimageProcessor(3,4,-10);
+        p = std::move(imageProcessor);
+        REQUIRE(p.rows == imageProcessor.rows);
+    }
+    
+    SECTION( "Copy Assignment Operator" ) {
+        PGMimageProcessor p = PGMimageProcessor(3,4,-10);
+        p = imageProcessor;
+        REQUIRE(p.rows == imageProcessor.rows);
+    }
+    
+        
+    SECTION("Component Methods"){
+        REQUIRE(imageProcessor.extractComponents(threshold,0) == 6);
+        REQUIRE(imageProcessor.getComponentCount() == 6);
+        REQUIRE(imageProcessor.filterComponentsBySize(minSize,maxSize) == 3);
+        REQUIRE(imageProcessor.getLargestSize() == 6458);
+        REQUIRE(imageProcessor.getSmallestSize() == 4275);
+        REQUIRE(imageProcessor.writeComponents(outFile) == true);
+    }
+    
+    SECTION( "Move Constructor" ) {
+        PGMimageProcessor p = std::move(imageProcessor);
+        REQUIRE(p.rows == imageProcessor.rows);
+    }
 }
+#endif
