@@ -59,8 +59,8 @@ namespace CHTTIN007 {
                     }
                     else{
                         for (std::vector<Pixel>::iterator x=c.pixels.begin();x != c.pixels.end(); ++x){
-                            std::cout<<(*x).x<< ":"<< (*x).y <<":"<<*(*x).value<< std::endl;
-                            *imagePixels[(*x).x][(*x).y].value = 50;
+                            *imagePixels[(*x).x][(*x).y].value = 0;
+                            //std::cout<<(*x).x<< ":"<< (*x).y <<":"<<*(*x).value<< std::endl;
                         }
                     }
                 }
@@ -95,7 +95,7 @@ namespace CHTTIN007 {
                 MyFile << binary ;
             }
         }
-        std::cout << name << " Created" << std::endl;
+        std::cout <<"Output file: "<< name << " Created" << std::endl;
         return true;
     }
     
@@ -107,6 +107,9 @@ namespace CHTTIN007 {
     int PGMimageProcessor::filterComponentsBySize(int minSize, int maxSize){
         for(std::vector<ConnectedComponent>::iterator i= components.begin();i != components.end(); ++i ){
             if ((*i).getSize() < minSize || (*i).getSize() > maxSize){ 
+                for (std::vector<Pixel>::iterator x=(*i).pixels.begin();x != (*i).pixels.end(); ++x){
+                    *imagePixels[(*x).x][(*x).y].value = 0;
+                }
                 components.erase(i--);
             }
         }

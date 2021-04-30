@@ -23,9 +23,9 @@ namespace CHTTIN007{
     Pixel::~Pixel(){}
     
     //Copy constructor
-    Pixel::Pixel(const Pixel & rhs): x(rhs.x),y(rhs.x),value(rhs.value),checked(rhs.checked){}
+    Pixel::Pixel(const Pixel & rhs): x(rhs.x),y(rhs.y),value(rhs.value),checked(rhs.checked){}
     //Move construcot
-    Pixel::Pixel(Pixel && rhs): x(rhs.x),y(rhs.x),value(rhs.value),checked(rhs.checked){
+    Pixel::Pixel(Pixel && rhs): x(rhs.x),y(rhs.y),value(rhs.value),checked(rhs.checked){
         delete &rhs;
     }
     //copy assignment operator
