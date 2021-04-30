@@ -54,7 +54,7 @@ TEST_CASE("PGMimageProcessor Methods"){
             pixelrow.push_back(p);
             pos++;
         }
-        imageProcessor.getImagePixels().push_back(pixelrow);
+        imageProcessor.getImagePixels()->push_back(pixelrow);
     }
     SECTION("Constructor"){
         REQUIRE(imageProcessor.rows == rows);

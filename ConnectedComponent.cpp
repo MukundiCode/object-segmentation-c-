@@ -10,7 +10,7 @@ using namespace CHTTIN007;
 namespace CHTTIN007 {
 
     ConnectedComponent::ConnectedComponent(){
-        
+        boundaryCount = 0;
     };
     
     //destructor
@@ -19,6 +19,14 @@ namespace CHTTIN007 {
     //To get the size of the component
     int ConnectedComponent::getSize()const{
         return pixels.size();
+    }
+    
+    int ConnectedComponent::getBoundary()const{
+        return boundaryCount;
+    }
+    
+    void ConnectedComponent::incrementBoundary(){
+        boundaryCount++;
     }
     
     // == operator overload

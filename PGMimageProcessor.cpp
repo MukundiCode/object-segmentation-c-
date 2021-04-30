@@ -21,7 +21,7 @@ namespace CHTTIN007 {
     std::vector<std::vector<Pixel> >* PGMimageProcessor::getImagePixels(){
         return &imagePixels;
     }
-    //Implementing floodfill
+    /*The floodfill function recursively does a breadth first search to get all the pixels of a connected component*/
     void PGMimageProcessor:: floodfill(int x,int y,ConnectedComponent* c){
         if (x >= imagePixels.size() || y >= imagePixels[0].size() || x < 0 || y < 0){
             return;
@@ -32,6 +32,7 @@ namespace CHTTIN007 {
         else if(*imagePixels[x][y].value <= threshold){
             *imagePixels[x][y].value = 0;
             imagePixels[x][y].checked = !imagePixels[x][y].checked;
+            c->incrementBoundary();
             return;
         }
         else{
@@ -58,7 +59,7 @@ namespace CHTTIN007 {
                         c.id = components.size();
                         c.pixelCount = c.getSize();
                         components.push_back(c);
-                        std::cout<<"Component created with size "<<components.back().getSize()<<" and ID "<<c.id<<" and added to components vector."<<std::endl;
+                        std::cout<<"Component created with size "<<components.back().getSize()<<" ,ID "<<c.id<<" and boundary count "<<c.getBoundary()<<" and added to components vector."<<std::endl;
                     }
                     else{
                         for (std::vector<Pixel>::iterator x=c.pixels.begin();x != c.pixels.end(); ++x){
@@ -154,7 +155,7 @@ namespace CHTTIN007 {
         int counter = 0;
         for(std::vector<ConnectedComponent>::const_iterator i= components.begin();i != components.end(); ++i ){
             if ((*i) == theComponent){
-                std::cout<<counter<<","<<(*i).getSize()<<std::endl;
+                std::cout<<counter<<","<<(*i).getSize()<<","<<(*i).getBoundary()<<std::endl;
             }
             counter++;
         }

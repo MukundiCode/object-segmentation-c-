@@ -8,6 +8,8 @@
 namespace CHTTIN007 {
 
     class ConnectedComponent {
+        private:
+            int boundaryCount;
         public:
             int id;
             int pixelCount;
@@ -26,7 +28,8 @@ namespace CHTTIN007 {
             ConnectedComponent & operator=(ConnectedComponent && rhs) = default;
             
             int getSize()const;
-            
+            int getBoundary()const;
+            void incrementBoundary();
     
     };
     bool operator== (const ConnectedComponent &c1, const ConnectedComponent &c2);

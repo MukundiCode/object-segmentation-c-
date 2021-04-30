@@ -78,7 +78,6 @@ int main(int argc, char* argv[]) {
             }
             imageProcessor.getImagePixels()->push_back(pixelrow);
         }
-        std::cout<<"Here "<<imageProcessor.getImagePixels()->size()<<std::endl;
         
         int noOfComps = imageProcessor.extractComponents(threshold,minSize);
         std::cout<< "Number of components: "<< imageProcessor.getComponentCount() << std::endl;
