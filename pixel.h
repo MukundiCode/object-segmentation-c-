@@ -11,12 +11,12 @@ namespace CHTTIN007 {
         public:
             int x;
             int y;
-            unsigned char* value;
+            int* value;
             bool checked;
             
             //constructors
             Pixel();
-            Pixel(int xCord, int yCord,unsigned char* val);
+            Pixel(int xCord, int yCord,int* val);
             
             //destructor 
             ~Pixel();

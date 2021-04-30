@@ -14,7 +14,7 @@ namespace CHTTIN007{
     Pixel::Pixel(){
         checked = false;
     }
-    Pixel::Pixel(int xCord,int yCord,unsigned char* val){
+    Pixel::Pixel(int xCord,int yCord,int* val){
         x = xCord;
         y = yCord;
         value = val;

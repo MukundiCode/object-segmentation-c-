@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
         int columns = 0;
         
         //extracting the file contents and loading them into a 1D vector
-        std::vector<unsigned char> all ;
+        std::vector<int> all ;
         while (std::getline(image, line)) {
             counter++;
             if (read == true) {
