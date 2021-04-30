@@ -18,6 +18,9 @@ namespace CHTTIN007 {
         threshold = t;
     }
     
+    std::vector<std::vector<Pixel> >* PGMimageProcessor::getImagePixels(){
+        return &imagePixels;
+    }
     //Implementing floodfill
     void PGMimageProcessor:: floodfill(int x,int y,ConnectedComponent* c){
         if (x >= imagePixels.size() || y >= imagePixels[0].size() || x < 0 || y < 0){

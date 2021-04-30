@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
         std::string outFile = argv[9];
 
         std::string line;
-        std::ifstream image(filename,std::ios::binary);
+        std::ifstream image(filename,std::ios_base::binary);
         
         int counter = 0;
         bool read = false;
@@ -31,6 +31,8 @@ int main(int argc, char* argv[]) {
         
         //extracting the file contents and loading them into a 1D vector
         std::vector<int> all ;
+        int largest = -255;
+        int smallest = 0;
         while (std::getline(image, line)) {
             counter++;
             if (read == true) {
@@ -40,6 +42,12 @@ int main(int argc, char* argv[]) {
                 for (char c : line){
                     int y = c;
                     all.push_back(c);
+                    if (y > largest){
+                        largest = y;
+                    }
+                    else if(y < smallest){
+                        smallest = y;
+                    }
                     }
                 }
             else{
@@ -56,7 +64,8 @@ int main(int argc, char* argv[]) {
                 prevLine = line;
                 }   
         }
-        
+        std::cout <<"*********************************************************************" << std::endl;
+        std::cout<< "Range of values is: "<<smallest<<" to "<<largest<<". Threshold should be within range!"<<std::endl;
         PGMimageProcessor imageProcessor(rows,columns,threshold);
         //Loop to create vector of pixel objects
         int pos = 0;
@@ -67,9 +76,9 @@ int main(int argc, char* argv[]) {
                 pixelrow.push_back(p);
                 pos++;
             }
-            imageProcessor.imagePixels.push_back(pixelrow);
+            imageProcessor.getImagePixels()->push_back(pixelrow);
         }
-        
+        std::cout<<"Here "<<imageProcessor.getImagePixels()->size()<<std::endl;
         
         int noOfComps = imageProcessor.extractComponents(threshold,minSize);
         std::cout<< "Number of components: "<< imageProcessor.getComponentCount() << std::endl;

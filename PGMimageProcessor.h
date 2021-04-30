@@ -10,10 +10,11 @@
 
 namespace CHTTIN007 {
     class PGMimageProcessor{
+        private:
+            std::vector<std::vector<Pixel> > imagePixels;
         public:
             int rows;
             int columns;
-            std::vector<std::vector<Pixel> > imagePixels;
             int threshold = -61;
             //constructors
             PGMimageProcessor(void);
@@ -28,7 +29,7 @@ namespace CHTTIN007 {
             PGMimageProcessor & operator=(const PGMimageProcessor& rhs) = default;
             PGMimageProcessor & operator=(PGMimageProcessor && rhs) = default;
             
-            
+            std::vector<std::vector<Pixel> >* getImagePixels();
             /*The floodfill method rakes in an x and y value then recursively check if neighbors are connected*/
             void floodfill(int x, int y,ConnectedComponent* c);
             int extractComponents(int threshold, int minValidSize);
