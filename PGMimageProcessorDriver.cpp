@@ -62,13 +62,22 @@ int main(int argc, char* argv[]) {
         int pos = 0;
         for (int x=0;x<columns;++x){
             std::vector<Pixel> pixelrow;
-            for(int y=0;y<rows;++y){
-                //int value = all[pos]; 
-                Pixel p(x,y,&all[pos]);
+            for(int y=0;y<rows;y++){
+                //Pixel p(x,y,&all[pos]);
+                Pixel p;
                 pixelrow.push_back(p);
+                pixelrow.back().x = x;
+                pixelrow.back().y = y;
+                pixelrow.back().value = &all[pos];
                 pos++;
             }
             imageProcessor.imagePixels.push_back(pixelrow);
+        }
+        
+        for (int x=0;x<columns;++x){
+            for(int y=0;y<rows;y++){
+                std::cout<< imageProcessor.imagePixels[x][y].x<<":"<<imageProcessor.imagePixels[x][y].y<<" should be "<<x<<":"<<y<<std::endl;
+            }
         }
         
         int noOfComps = imageProcessor.extractComponents(threshold,minSize);

@@ -11,7 +11,9 @@ using namespace CHTTIN007;
 
 namespace CHTTIN007{
     //implementing constructors
-    Pixel::Pixel(){}
+    Pixel::Pixel(){
+        checked = false;
+    }
     Pixel::Pixel(int xCord,int yCord,int* val){
         x = xCord;
         y = yCord;

@@ -57,6 +57,12 @@ namespace CHTTIN007 {
                         components.push_back(c);
                         std::cout<<"Component created with size "<<components.back().getSize()<<" and ID "<<c.id<<" and added to components vector."<<std::endl;
                     }
+                    else{
+                        for (std::vector<Pixel>::iterator x=c.pixels.begin();x != c.pixels.end(); ++x){
+                            std::cout<<(*x).x<< ":"<< (*x).y <<":"<<*(*x).value<< std::endl;
+                            *imagePixels[(*x).x][(*x).y].value = 50;
+                        }
+                    }
                 }
                 else if(*imagePixels[x][y].value <= threshold && imagePixels[x][y].checked == false){
                     *imagePixels[x][y].value = 0;
@@ -100,7 +106,7 @@ namespace CHTTIN007 {
     */
     int PGMimageProcessor::filterComponentsBySize(int minSize, int maxSize){
         for(std::vector<ConnectedComponent>::iterator i= components.begin();i != components.end(); ++i ){
-            if ((*i).getSize() < minSize || (*i).getSize() > maxSize){
+            if ((*i).getSize() < minSize || (*i).getSize() > maxSize){ 
                 components.erase(i--);
             }
         }
