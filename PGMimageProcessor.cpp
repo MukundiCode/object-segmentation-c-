@@ -60,7 +60,6 @@ namespace CHTTIN007 {
                     else{
                         for (std::vector<Pixel>::iterator x=c.pixels.begin();x != c.pixels.end(); ++x){
                             *imagePixels[(*x).x][(*x).y].value = 0;
-                            //std::cout<<(*x).x<< ":"<< (*x).y <<":"<<*(*x).value<< std::endl;
                         }
                     }
                 }

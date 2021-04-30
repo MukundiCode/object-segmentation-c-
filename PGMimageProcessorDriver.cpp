@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
                 //all.push_back(a);
                 for (char c : line){
                     int y = c;
-                    all.push_back(c);
+                    all.push_back(y);
                     }
                 }
             else{

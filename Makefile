@@ -20,4 +20,4 @@ unit_tests.o: unit_tests.cpp
 	g++ -c unit_tests.cpp -o unit_tests.o -std=c++2a
   
 clean:
-	rm *.o findcomp.exe
+	rm *.o findcomp.exe tests.exe
