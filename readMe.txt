@@ -1,7 +1,5 @@
 Tinashe Mukundi Chitamba
 
-Assignment 3 Description
-
 1. The PGMImageProcessor.cpp and header file have the declaration and implementation for the PGMImageProcessor 
 class, and stores the connectedComponents, as well as having the required methods stated in the assignment 
 
